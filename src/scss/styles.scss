@@ -1,14 +1,95 @@
 $primary: #094d5a;
+$input-bg: #e0e0e0;
+$input-color: #1f6477;
+$input-placeholder-color: $input-color;
+$input-border-color: $input-bg;
+$form-select-indicator-color: $input-color;
+$input-border-radius: 8px;
+$btn-border-radius: $input-border-radius;
 
 @import "bootstrap/scss/bootstrap";
 
-
 body {
   background: #fafbfc;
+  font-family: 'Poppins', sans-serif;
 
   a {
     color: #2f94b4;
     text-decoration: none;
+  }
+
+  main {
+    background: #00ada1;
+    padding: 10rem 1rem 8rem;
+
+    .main-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      max-width: 68rem;
+
+      .content {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+        max-width: 22rem;
+        color: #fff;
+
+        h1 {
+          font-size: 2.25rem;
+          line-height: 4rem;
+          font-weight: 700;
+        }
+
+        p {
+          line-height: 1.7rem;
+        }
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        background: #fff;
+        padding: 2rem 1rem;
+        border-radius: 8px;
+
+        input,
+        select,
+        button {
+          height: 2.8125rem;
+        }
+
+        input,
+        select {
+          font-size: 0.9rem;
+        }
+
+        button {
+          font-weight: 700;
+        }
+
+        footer {
+          p {
+            color: #1f6477;
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.8rem;
+            text-align: center;
+
+            a {
+              color: #fb6215;
+
+              &:hover {
+                text-decoration: underline
+              }
+            }
+          }
+        }
+      }
+    }
   }
 
   .footer {
@@ -248,6 +329,28 @@ body {
   }
 
   @include media-breakpoint-up(sm) {
+    main {
+      .main-container {
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 0 auto;
+
+        .content {
+          h1 {
+            font-size: 3.25rem;
+          }
+
+          p {
+            font-size: 1.375rem;
+          }
+        }
+
+        form {
+          max-width: 30rem;
+        }
+      }
+    }
+
     .footer {
       .footer-contact {
         flex-direction: row;
@@ -275,6 +378,14 @@ body {
   }
 
   @include media-breakpoint-up(lg) {
+    main {
+      .main-container {
+        form {
+          padding: 2rem 2rem 1rem;
+        }
+      }
+    }
+
     .footer {
       .footer-contact {
         flex-direction: row;
