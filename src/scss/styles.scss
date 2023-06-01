@@ -7,6 +7,8 @@ $input-border-color: $input-bg;
 $form-select-indicator-color: $input-color;
 $input-border-radius: 8px;
 $btn-border-radius: $input-border-radius;
+$navbar-light-icon-color: #fff;
+$navbar-toggler-focus-width: 0;
 
 @import "bootstrap/scss/bootstrap";
 
@@ -22,6 +24,244 @@ html {
       text-decoration: none;
     }
 
+    .header {
+      position: fixed;
+      background: rgba(0, 0, 0, 0.8);
+      width: 100%;
+      z-index: 20;
+
+      .talk-experts {
+        display: flex;
+        flex-direction: column;
+        color: #fff;
+        padding: 0.25rem 0.5rem;
+        border-bottom: 1px solid #0c5b74;
+        font-size: 0.75rem;
+        text-align: center;
+
+        a {
+          color: currentColor;
+          font-weight: 700;
+        }
+      }
+
+      .nav-menu {
+        padding: 0.5rem;
+
+        .navbar-toggler {
+          padding: 0;
+          cursor: pointer;
+
+          .toggle-icon {
+            position: relative;
+            display: block;
+            width: 1.375rem;
+            height: 1.375rem;
+
+            .hamburguer {
+              position: absolute;
+              display: flex;
+              flex-direction: column;
+              gap: 0.25rem;
+              width: 100%;
+              height: 100%;
+
+              span {
+                display: block;
+                width: 0%;
+                height: 0.125rem;
+                background: #fff;
+                transition: .2s ease-in-out;
+
+                &:nth-child(1) {
+                  transition-delay: 0s;
+                }
+
+                &:nth-child(2) {
+                  transition-delay: .125s;
+                }
+
+                &:nth-child(3) {
+                  transition-delay: .2s;
+                }
+              }
+            }
+
+            .cross {
+              position: absolute;
+              display: block;
+              width: 100%;
+              height: 100%;
+              transform: rotate(45deg);
+
+              span {
+                display: block;
+                background: #ffae3b;
+                transition: .2s ease-in-out;
+
+                &:nth-child(1) {
+                  position: absolute;
+                  top: 0;
+                  left: 0.625rem;
+                  width: 0.125rem;
+                  height: 100%;
+                  transition-delay: .3s;
+                }
+
+                &:nth-child(2) {
+                  position: absolute;
+                  top: 0.625rem;
+                  left: 0;
+                  width: 100%;
+                  height: 0.125rem;
+                  transition-delay: .4s;
+                }
+              }
+            }
+          }
+
+          &.collapsed {
+            .toggle-icon {
+              .hamburguer {
+                span {
+                  width: 100%;
+
+                  &:nth-child(1) {
+                    transition-delay: .3s;
+                  }
+
+                  &:nth-child(2) {
+                    transition-delay: .4s;
+                  }
+
+                  &:nth-child(3) {
+                    transition-delay: .5s;
+                  }
+                }
+              }
+
+              .cross {
+                span {
+                  &:nth-child(1) {
+                    height: 0%;
+                    transition-delay: 0s;
+                  }
+
+                  &:nth-child(2) {
+                    width: 0%;
+                    transition-delay: .2s;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .navbar-collapse {
+          padding: 0.625rem 1.875rem;
+
+          .menu {
+            gap: 1.25rem;
+            font-family: 'Roboto', sans-serif;
+
+            .nav-item {
+              .nav-link {
+                color: #fff;
+
+                &:hover {
+                  color: #ffae3b;
+                }
+
+                &::before {
+                  content: "";
+                  position: absolute;
+                  bottom: 0;
+                  left: auto;
+                  right: 0;
+                  width: 0;
+                  transition: all .2s linear;
+                }
+              }
+
+              &.btn-customer,
+              &.btn-prospect {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #212529;
+                padding: 0.5rem;
+                border-radius: 6.25rem;
+                font-size: 1rem;
+                line-height: 1.5;
+              }
+
+              &.btn-customer {
+                border: 1px solid #fff;
+                color: #fff;
+
+                &:hover {
+                  color: #ffae3b;
+                }
+              }
+
+              &.btn-prospect {
+                background: #ffae3b;
+                text-transform: uppercase;
+
+                & a {
+                  color: #094d5a;
+
+                  &:hover {
+                    color: #fff;
+                  }
+                }
+
+                &:hover {
+                  color: #ffae3b;
+                }
+              }
+
+              .dropdown-menu {
+                padding: 0;
+                margin: 0;
+                color: #fff;
+
+                .dropdown-item {
+                  display: flex;
+                  align-items: center;
+                  gap: 1rem;
+                  padding: 0.5rem 1.25rem;
+                  white-space: initial;
+
+                  i {
+                    color: #00ada1;
+                    font-size: 1.5rem;
+                  }
+
+                  &:hover {
+                    background: #429da6;
+
+                    i {
+                      color: #ffae3b;
+                    }
+                  }
+                }
+              }
+
+              &.active {
+                .nav-link::before {
+                  right: auto;
+                  left: 0;
+                  background: #ffae3b;
+                  width: 100%;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
     main {
       background: #00ada1;
       padding: 10rem 1rem 8rem;
@@ -32,7 +272,6 @@ html {
         align-items: center;
         justify-content: center;
         gap: 1.5rem;
-        max-width: 68rem;
 
         .content {
           display: flex;
@@ -715,8 +954,6 @@ html {
       }
 
       .options {
-        max-width: 68rem;
-        margin: 0 auto;
         padding: 4rem 2rem;
 
         .options-container {
@@ -755,9 +992,6 @@ html {
       }
 
       .segment {
-        max-width: 68rem;
-        margin: 0 auto;
-
         .segment-content {
           .wrapper {
             .cards-container {
@@ -778,8 +1012,6 @@ html {
           flex-direction: row;
           align-items: center;
           justify-content: center;
-          max-width: 68rem;
-          margin: 0 auto;
 
           p {
             max-width: 40%;
@@ -854,8 +1086,50 @@ html {
     }
 
     @include media-breakpoint-up(lg) {
+      .header {
+        .talk-experts {
+          flex-direction: row;
+          justify-content: center;
+          font-size: 0.875rem;
+        }
+
+        .nav-menu {
+          max-width: 71.25rem;
+          margin: 0 auto;
+          padding-top: 0;
+          padding-bottom: 0;
+
+          .navbar-collapse {
+            justify-content: end;
+            padding: 0;
+
+            .menu {
+              align-items: center;
+              gap: .25rem;
+
+              .nav-item {
+
+                &.btn-customer,
+                &.btn-prospect {
+                  margin: 1rem 0 1rem 1.875rem;
+                }
+
+                .dropdown-menu {
+                  margin-top: 1.6875rem;
+                  background: #fff;
+                  color: #6e6c88;
+
+                }
+              }
+            }
+          }
+        }
+      }
+
       main {
         .main-container {
+          max-width: 71.25rem;
+
           form {
             padding: 2rem 2rem 1rem;
           }
@@ -864,6 +1138,9 @@ html {
 
       .options {
         .options-container {
+          max-width: 71.25rem;
+          margin: 0 auto;
+
           .call-to-action {
             .content {
               flex-direction: row;
@@ -874,6 +1151,9 @@ html {
 
       .segment {
         .segment-content {
+          max-width: 71.25rem;
+          margin: 0 auto;
+
           .wrapper {
             flex-direction: row-reverse;
 
@@ -886,6 +1166,8 @@ html {
 
       .process {
         .process-container {
+          max-width: 71.25rem;
+          margin: 0 auto;
           justify-content: space-between;
           gap: 0;
 
@@ -898,7 +1180,7 @@ html {
 
       .features {
         .features-container {
-          max-width: 68rem;
+          max-width: 71.25rem;
           margin: 0 auto;
           padding-left: 2.5rem;
           padding-right: 2.5rem;
@@ -920,7 +1202,7 @@ html {
           flex-direction: row;
           align-items: center;
           gap: 2rem;
-          max-width: 68rem;
+          max-width: 71.25rem;
           margin: 0 auto;
 
           .form-container {

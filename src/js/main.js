@@ -1,6 +1,23 @@
-import { Collapse } from 'bootstrap'
+import { Collapse, Dropdown } from 'bootstrap'
 
 import '../scss/styles.scss'
+
+// Handle change bg color header on scroll donw
+const header = document.querySelector('.header')
+const experts = document.querySelector('.talk-experts')
+window.onscroll = () => {
+  if (window.scrollY > 50) {
+    header.style.background = '#206c7b'
+    experts.style.display = 'none'
+  } else if (window.scrollY < 50) {
+    header.style.background = 'rgba(0, 0, 0, 0.8)'
+    experts.style.display = 'flex'
+  }
+}
+
+// Bootstrap dropdown menu
+Array.from(document.querySelectorAll('.dropdown'))
+  .forEach(dropdown => new Dropdown(dropdown))
 
 // Bootstrap feature Accordion
 
